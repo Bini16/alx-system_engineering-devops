@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
-# Configures an Nginx server so that /redirect_me redirects to another page.
-# The redirection is configured as a "301 Moved Permanently"
+# Installs Nginx on your web-01 server
+# Returns a page containing "Hello World!" when queried
 
 apt-get update
 apt-get install -y nginx
 
 mkdir /etc/nginx/html
 touch /etc/nginx/html/index.html
-echo "Hello World!" > /var/www/html/index.html
+echo "Hello World!" > /etc/nginx/html/index.html
 printf %s "server {
      listen      80 default_server;
      listen      [::]:80 default_server;
@@ -16,4 +16,4 @@ printf %s "server {
 }
 " > /etc/nginx/sites-available/default
 
-service nginx restart
+service nginx restart 
